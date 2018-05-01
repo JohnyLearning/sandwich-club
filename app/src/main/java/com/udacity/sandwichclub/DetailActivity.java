@@ -26,13 +26,13 @@ public class DetailActivity extends AppCompatActivity {
     private TextView alsoKnownAsTv;
     private TextView ingredientsTv;
     private TextView descriptionTv;
-
+    private ImageView ingredientsIv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ImageView ingredientsIv = findViewById(R.id.image_iv);
+        ingredientsIv = findViewById(R.id.image_iv);
         placeOfOriginTv = findViewById(R.id.origin_tv);
         alsoKnownAsTv = findViewById(R.id.also_known_tv);
         ingredientsTv = findViewById(R.id.ingredients_tv);
@@ -60,11 +60,7 @@ public class DetailActivity extends AppCompatActivity {
         }
 
         populateUI(sandwich);
-        Picasso.with(this)
-                .load(sandwich.getImage())
-                .into(ingredientsIv);
 
-        setTitle(sandwich.getMainName());
     }
 
     private void closeOnError() {
@@ -72,11 +68,15 @@ public class DetailActivity extends AppCompatActivity {
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
     }
 
-    private void populateUI(Sandwich sandwich) {
+    private void populateUI(final Sandwich sandwich) {
         placeOfOriginTv.setText(sandwich.getPlaceOfOrigin());
         alsoKnownAsTv.setText(listToCsv(sandwich.getAlsoKnownAs()));
         ingredientsTv.setText(listToCsv(sandwich.getIngredients()));
         descriptionTv.setText(sandwich.getDescription());
+        Picasso.with(this)
+                .load(sandwich.getImage())
+                .into(ingredientsIv);
+        setTitle(sandwich.getMainName());
     }
 
     private String listToCsv(List<String> list) {
