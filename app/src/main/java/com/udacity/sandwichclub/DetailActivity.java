@@ -32,8 +32,6 @@ public class DetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
         ImageView ingredientsIv = findViewById(R.id.image_iv);
         placeOfOriginTv = findViewById(R.id.origin_tv);
         alsoKnownAsTv = findViewById(R.id.also_known_tv);
@@ -67,15 +65,6 @@ public class DetailActivity extends AppCompatActivity {
                 .into(ingredientsIv);
 
         setTitle(sandwich.getMainName());
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-        }
-        return true;
     }
 
     private void closeOnError() {
