@@ -3,7 +3,6 @@ package com.udacity.sandwichclub;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -12,31 +11,33 @@ import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
-import org.w3c.dom.Text;
-
 import java.util.List;
-import java.util.StringJoiner;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
 
-    private TextView placeOfOriginTv;
-    private TextView alsoKnownAsTv;
-    private TextView ingredientsTv;
-    private TextView descriptionTv;
-    private ImageView ingredientsIv;
+    @BindView(R.id.origin_tv)
+    TextView placeOfOriginTv;
+    @BindView(R.id.also_known_tv)
+    TextView alsoKnownAsTv;
+    @BindView(R.id.ingredients_tv)
+    TextView ingredientsTv;
+    @BindView(R.id.description_tv)
+    TextView descriptionTv;
+    @BindView(R.id.image_iv)
+    ImageView ingredientsIv;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        ingredientsIv = findViewById(R.id.image_iv);
-        placeOfOriginTv = findViewById(R.id.origin_tv);
-        alsoKnownAsTv = findViewById(R.id.also_known_tv);
-        ingredientsTv = findViewById(R.id.ingredients_tv);
-        descriptionTv = findViewById(R.id.description_tv);
+        ButterKnife.bind(this);
 
         Intent intent = getIntent();
         if (intent == null) {

@@ -24,8 +24,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="@dimen/side_margin_tv"
+            android:layout_marginRight="@dimen/side_margin_tv"
             tools:context="com.udacity.sandwichclub.DetailActivity">
 
             <TextView
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_also_known_as_label"
                 android:textStyle="bold"
-                android:layout_marginTop="7dp" />
+                android:layout_marginTop="@dimen/common_margin_top" />
 
             <TextView
                 android:id="@+id/also_known_tv"
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_ingredients_label"
                 android:textStyle="bold"
-                android:layout_marginTop="7dp"/>
+                android:layout_marginTop="@dimen/common_margin_top"/>
 
             <TextView
                 android:id="@+id/ingredients_tv"
@@ -57,7 +57,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_place_of_origin_label"
                 android:textStyle="bold"
-                android:layout_marginTop="7dp"/>
+                android:layout_marginTop="@dimen/common_margin_top"/>
 
             <TextView
                 android:id="@+id/origin_tv"
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/detail_description_label"
                 android:textStyle="bold"
-                android:layout_marginTop="7dp"/>
+                android:layout_marginTop="@dimen/common_margin_top"/>
 
             <TextView
                 android:id="@+id/description_tv"

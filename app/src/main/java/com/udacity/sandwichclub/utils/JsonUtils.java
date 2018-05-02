@@ -24,15 +24,15 @@ public class JsonUtils {
             String mainName = EMPTY_STRING;
             List<String> alsoKnownAsList = null;
             if (nameObject != null) {
-                mainName = nameObject.getString("mainName");
+                mainName = nameObject.optString("mainName");
                 alsoKnownAsList = convertJsonArrayToList(nameObject.getJSONArray("alsoKnownAs"));
             }
             sandwichReturned = new Sandwich(
                     mainName,
                     alsoKnownAsList,
-                    sandwichDetails.getString("placeOfOrigin"),
-                    sandwichDetails.getString("description"),
-                    sandwichDetails.getString("image"),
+                    sandwichDetails.optString("placeOfOrigin"),
+                    sandwichDetails.optString("description"),
+                    sandwichDetails.optString("image"),
                     convertJsonArrayToList(sandwichDetails.getJSONArray("ingredients"))
             );
         } catch (JSONException je) {
@@ -42,13 +42,13 @@ public class JsonUtils {
     }
 
     private static List<String> convertJsonArrayToList(JSONArray jsonArray) throws JSONException {
-        List<String> alsoKnownAsList = null;
+        List<String> arrayAsList = null;
         if (jsonArray != null && jsonArray.length() > 0) {
-            alsoKnownAsList = new ArrayList<>(jsonArray.length());
+            arrayAsList = new ArrayList<>(jsonArray.length());
             for (int i = 0; i < jsonArray.length(); i++) {
-                alsoKnownAsList.add(jsonArray.getString(i));
+                arrayAsList.add(jsonArray.optString(i));
             }
         }
-        return alsoKnownAsList;
+        return arrayAsList;
     }
 }
